@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import Todo from './Todo';
 import { Button, FormControl, Input, InputLabel } from '@material-ui/core';
 
 import './App.css';
 
 function App() {
-  const [todos, setTodos] = useState(['take dog for a walk', 'take the garbage out']);
+  const [todos, setTodos] = useState([]);
   const [input, setInput] = useState('');
   // console.log(input);
   
@@ -21,7 +22,7 @@ function App() {
       <h1>Hello world</h1>
       <form>        
         <FormControl>
-          <InputLabel>write a Tpodo</InputLabel>
+          <InputLabel>write a Todo</InputLabel>
           <Input  value={input} onChange={event => setInput(event.target.value)}/>
         </FormControl>
 
@@ -33,7 +34,8 @@ function App() {
 
       <ul>
         {todos.map(todo => (
-          <li>{todo}</li>
+          <Todo text={todo}/>
+          // <li>{todo}</li>
         ))}
       </ul>
     </div>
