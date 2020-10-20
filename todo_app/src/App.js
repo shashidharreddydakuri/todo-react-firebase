@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Todo from './Todo';
 import { Button, FormControl, Input, InputLabel } from '@material-ui/core';
 
 import './App.css';
+import db from './firebase';
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState('');
   // console.log(input);
+
+  useEffect(() => {
+    //this code here... fires when the app.js loads
+    db.collection('todos').onSnapshot(snapshot => {
+      setTodos(snapshot.docs.map(doc => doc.data().todo))
+    })
+  }, []);
   
   const addTodo = (event) => {
 
@@ -19,7 +27,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello world</h1>
+      <h1>Todo App</h1>
       <form>        
         <FormControl>
           <InputLabel>write a Todo</InputLabel>
