@@ -8,7 +8,7 @@ function Todo(props) {
         <List>
             <ListItem>
                 <ListItemAvatar></ListItemAvatar>
-                <ListItemText primary={props.text} secondary="Deadline..." />
+                <ListItemText primary={props.text} secondary="Deadline...⏲️" />
             </ListItem>
         </List>
     )
